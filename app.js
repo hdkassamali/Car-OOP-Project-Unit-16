@@ -34,14 +34,14 @@ class Garage {
     this.vehicles = [];
     this.capacity = capacity;
   }
-  add(newVehicle) {
-    if (!(newVehicle instanceof Vehicle)) {
+  add(vehicle) {
+    if (!(vehicle instanceof Car) && !(vehicle instanceof Motorcycle)) {
       return "Only vehicles are allowed in here!";
-    }
-    if (this.vehicles.length >= this.capacity) {
+    } else if (this.vehicles.length >= this.capacity) {
       return "Sorry, we're full.";
+    } else if (vehicle instanceof Car || vehicle instanceof Motorcycle) {
+      this.vehicles.push(vehicle);
+      return "Vehicle added!";
     }
-    this.vehicles.push(newVehicle);
-    return "Vehicle added!";
   }
 }
